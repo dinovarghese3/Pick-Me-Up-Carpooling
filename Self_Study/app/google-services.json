@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "261203198999",
+    "firebase_url": "https://pick-me-up-a7e81.firebaseio.com",
+    "project_id": "pick-me-up-a7e81",
+    "storage_bucket": "pick-me-up-a7e81.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:261203198999:android:352017babed04ea4844852",
+        "android_client_info": {
+          "package_name": "com.example.pickmeup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "261203198999-kdeg4fdv2qjnp1sni0rnq6b9ot4h7mrf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pickmeup",
+            "certificate_hash": "4c4f3712722056789161c25ddc0b194d0ccae508"
+          }
+        },
+        {
+          "client_id": "261203198999-4eod67f75gb02klkbpl4q8oclpot9251.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCQ1FYsqfhqs5pg2qfbzQkBX1tQPoxyi4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "261203198999-4eod67f75gb02klkbpl4q8oclpot9251.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

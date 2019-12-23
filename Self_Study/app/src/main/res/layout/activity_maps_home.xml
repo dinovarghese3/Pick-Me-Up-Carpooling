@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="480dp"
+        tools:context=".MapsHome" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/navigation_bar"
+        android:layout_width="match_parent"
+        android:layout_height="203dp"
+        android:layout_below="@+id/map"
+
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="0dp"
+        android:focusableInTouchMode="false">
+
+        <Button
+            android:id="@+id/button3"
+            android:layout_width="184dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/buttonbg"
+            android:drawableLeft="@drawable/ride_creator"
+            android:text="Create Ride"
+            map:layout_constraintBottom_toBottomOf="parent"
+
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintHorizontal_bias="0.407"
+            map:layout_constraintStart_toEndOf="@+id/rideSearch" />
+
+        <EditText
+            android:id="@+id/currentLocation"
+            android:layout_width="374dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="25dp"
+            android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:text="Your Location"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintStart_toStartOf="parent"
+            map:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/DestLocation"
+            android:layout_width="374dp"
+            android:layout_height="54dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="108dp"
+            android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:padding="15dp"
+            android:text="Destination"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintEnd_toEndOf="parent"
+            map:layout_constraintHorizontal_bias="parent"
+            map:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/rideSearch"
+            android:layout_width="184dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/common_google_signin_btn_text_light_normal_background"
+            android:drawableLeft="@drawable/search_ride"
+            android:text="Search Ride"
+            android:textSize="14sp"
+            map:layout_constraintBottom_toBottomOf="parent"
+            map:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="13dp"
+        android:foreground="@drawable/bell_bg" />
+
+</RelativeLayout>

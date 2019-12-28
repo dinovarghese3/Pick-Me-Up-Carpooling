@@ -1,14 +1,9 @@
 package com.example.pickmeup;
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -31,10 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.io.IOException;
-import java.util.List;
-
-public class MapsHome extends FragmentActivity implements
+public class Search_Ride extends FragmentActivity implements
         OnMapReadyCallback,
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
@@ -42,17 +34,15 @@ public class MapsHome extends FragmentActivity implements
 {
 
     private GoogleMap mMap;
-    String current;
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private Location lastLocation;
-    EditText locationSearch;
-    private Marker currentUserLocationMarker,SearchedLocationMarker=null;
+    private Marker currentUserLocationMarker;
     private static final int Request_User_Location_Code=99;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps_home);
+        setContentView(R.layout.activity_search__ride);
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
@@ -64,30 +54,6 @@ public class MapsHome extends FragmentActivity implements
                 .findFragmentById(R.id.map);
 
         mapFragment.getMapAsync(this);
-        Button route=findViewById(R.id.Route);
-        route.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //String sloc=locationSearch.getText().toString();
-
-                //if(sloc.isEmpty()){
-                   // locationSearch.setText("Enter a location");
-              //  }
-               // else{
-                    searchLocation(v);
-               // }
-            }
-        });
-
-        //Search Place
-
-
-
-
-
-
-
-
 
     }
 
@@ -100,7 +66,6 @@ public class MapsHome extends FragmentActivity implements
             buildGoogleApiClient();
 
             mMap.setMyLocationEnabled(true);
-
 
         }
     }
@@ -158,12 +123,12 @@ public class MapsHome extends FragmentActivity implements
 
     protected synchronized void buildGoogleApiClient()
     {
-       googleApiClient=new GoogleApiClient.Builder(this)
-               .addConnectionCallbacks(this)
-               .addOnConnectionFailedListener(this)
-               .addApi(LocationServices.API)
-               .build();
-       googleApiClient.connect();
+        googleApiClient=new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(LocationServices.API)
+                .build();
+        googleApiClient.connect();
     }
 
 
@@ -211,30 +176,5 @@ public class MapsHome extends FragmentActivity implements
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
-    }
-    public void searchLocation(View view) {
-        locationSearch = (EditText) findViewById(R.id.DestLocation);
-        String location = locationSearch.getText().toString();
-        List<Address> addressList = null;
-
-        if (location != null || !location.equals("")) {
-            Geocoder geocoder = new Geocoder(this);
-            try {
-                addressList = geocoder.getFromLocationName(location, 1);
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Address address = addressList.get(0);
-            LatLng latLng = new LatLng(address.getLatitude(), address.getLongitude());
-            if(SearchedLocationMarker!= null){
-                SearchedLocationMarker.remove();
-            }
-
-                SearchedLocationMarker = mMap.addMarker(new MarkerOptions().position(latLng).title(location));
-                mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                Toast.makeText(getApplicationContext(), address.getLatitude() + " " + address.getLongitude(), Toast.LENGTH_LONG).show();
-
-        }
     }
 }

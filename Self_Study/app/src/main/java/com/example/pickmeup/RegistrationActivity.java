@@ -60,11 +60,11 @@ public class RegistrationActivity extends AppCompatActivity {
                     mFirebase.createUserWithEmailAndPassword(email,Passw).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (!task.isSuccessful()) {
-                                Toast.makeText(RegistrationActivity.this,"Error!!", Toast.LENGTH_SHORT).show();
-                            } else {
-                                startActivity(new Intent(RegistrationActivity.this, MainActivity.class));
-                            }
+                            //if (!task.isSuccessful()) {
+                               // Toast.makeText(RegistrationActivity.this,"Error!!", Toast.LENGTH_SHORT).show();
+                            //} else {
+                                startActivity(new Intent(RegistrationActivity.this, userdata.class));
+                           // }
                         }
                     });
                 } else {

@@ -21,6 +21,11 @@ allprojects {
         jcenter()
         
     }
+    repositories {
+        maven {
+            url  "https://microsoft-maps.bintray.com/Maven"
+        }
+    }
 }
 
 task clean(type: Delete) {

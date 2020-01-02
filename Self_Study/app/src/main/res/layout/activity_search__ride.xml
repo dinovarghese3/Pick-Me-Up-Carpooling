@@ -13,7 +13,7 @@
             android:id="@+id/map"
             android:name="com.google.android.gms.maps.SupportMapFragment"
             android:layout_width="match_parent"
-            android:layout_height="534dp"
+            android:layout_height="555dp"
             tools:context=".MapsHome" />
 
     </RelativeLayout>
@@ -24,17 +24,18 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentBottom="true"
+        android:background="@drawable/mapbg"
         android:focusableInTouchMode="false"
         tools:layout_editor_absoluteY="513dp">
 
         <Button
             android:id="@+id/button3"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="28dp"
-            android:background="@drawable/button"
+            android:background="@drawable/butonbground"
             android:drawableLeft="@drawable/route"
             android:text="Search vehicle"
             map:layout_constraintBottom_toBottomOf="parent"

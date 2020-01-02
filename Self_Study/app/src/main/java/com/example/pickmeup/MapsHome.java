@@ -1,4 +1,5 @@
 package com.example.pickmeup;
+
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Address;
@@ -24,6 +25,7 @@ import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -42,17 +44,21 @@ public class MapsHome extends FragmentActivity implements
 {
 
     private GoogleMap mMap;
+
     String current;
+
     private GoogleApiClient googleApiClient;
     private LocationRequest locationRequest;
     private Location lastLocation;
     EditText locationSearch;
+    private MapFragment mapFragment;
     private Marker currentUserLocationMarker,SearchedLocationMarker=null;
     private static final int Request_User_Location_Code=99;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_home);
+        String Apikey="AIzaSyBCQ1FYsqfhqs5pg2qfbzQkBX1tQPoxyi4";
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
@@ -63,19 +69,28 @@ public class MapsHome extends FragmentActivity implements
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
 
+
         mapFragment.getMapAsync(this);
         Button route=findViewById(R.id.Route);
         route.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //String sloc=locationSearch.getText().toString();
+                try {
 
-                //if(sloc.isEmpty()){
-                   // locationSearch.setText("Enter a location");
-              //  }
-               // else{
+
+                    //String sloc=locationSearch.getText().toString();
+
+                    //if(sloc.isEmpty()){
+                    // locationSearch.setText("Enter a location");
+                    //  }
+                    // else{
                     searchLocation(v);
-               // }
+                    // }
+                }
+                catch (Exception e)
+                {
+                    Toast.makeText(MapsHome.this,"Place not detected Check the Spelling ", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -92,7 +107,10 @@ public class MapsHome extends FragmentActivity implements
     }
 
 
-    @Override
+
+
+
+            @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)== getPackageManager().PERMISSION_GRANTED) {
@@ -233,8 +251,8 @@ public class MapsHome extends FragmentActivity implements
 
                 SearchedLocationMarker = mMap.addMarker(new MarkerOptions().position(latLng).title(location));
                 mMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
-                Toast.makeText(getApplicationContext(), address.getLatitude() + " " + address.getLongitude(), Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(getApplicationContext(), address.getLatitude() + " " + address.getLongitude(), Toast.LENGTH_LONG).show();
+                Toast.makeText(MapsHome.this,location+" is Found", Toast.LENGTH_SHORT).show();
         }
     }
 }

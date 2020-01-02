@@ -19,7 +19,7 @@ public class Dissition_activity extends AppCompatActivity {
             @Override
             public void onClick(View v)
             {
-                startActivity(new Intent(Dissition_activity.this,MapsHome.class));
+                startActivity(new Intent(Dissition_activity.this,MapsActivity.class));
             }
         });
         searchRide.setOnClickListener(new View.OnClickListener() {

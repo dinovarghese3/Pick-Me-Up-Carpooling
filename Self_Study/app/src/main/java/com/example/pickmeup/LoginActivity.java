@@ -26,7 +26,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mFirebase = FirebaseAuth.getInstance();
     EditText emailId, password;
-    private String emailid="Dino";
+    private String emailid;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
 
@@ -38,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE)
                 .getBoolean("isFirstRun", true);
         super.onCreate(savedInstanceState);
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
             setContentView(R.layout.activity_login_);
             Button signIN = findViewById(R.id.signin);
             emailId = findViewById(R.id.emailID);
-            password = findViewById(R.id.passWord);
+            password = findViewById(R.id.email_id);
             signIN.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -67,17 +68,19 @@ public class LoginActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
 
                                     if (task.getException() instanceof FirebaseAuthUserCollisionException) {
-                                        Toast.makeText(LoginActivity.this, "User with this email already exist.", Toast.LENGTH_SHORT).show();
+                                        //Toast.makeText(LoginActivity.this, "User with this email already exist.", Toast.LENGTH_SHORT).show();
                                         //if account already sign in
                                         //bottom else is not required
                                         startActivity(new Intent(LoginActivity.this, Dissition_activity.class));
+                                        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
                                         // Intent activity2Intent = new Intent(getApplicationContext(), MainActivity.class);
                                         // startActivity(activity2Intent);
                                     }
 
 
                                 } else {
-                                    startActivity(new Intent(LoginActivity.this, MapsHome.class));
+                                    Toast.makeText(LoginActivity.this,"Create new Profile", Toast.LENGTH_SHORT).show();
+                                  //startActivity(new Intent(LoginActivity.this, MapsHome.class));
                                 }
                             }
                         });
@@ -104,7 +107,6 @@ public class LoginActivity extends AppCompatActivity {
         }
 
 
-        getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit()
-                .putBoolean("isFirstRun", false).commit();
+
     }
 }

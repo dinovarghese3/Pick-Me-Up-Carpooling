@@ -38,41 +38,47 @@ public class RegistrationActivity extends AppCompatActivity {
         TextView signIn_text = findViewById(R.id.signIn_text);
         Button signUP = findViewById(R.id.signup);
         emailId = findViewById(R.id.emailID);
-        password = findViewById(R.id.passWord);
+        password = findViewById(R.id.email_id);
         username=findViewById(R.id.userName);
         phonenumber=findViewById(R.id.phoneNumber);
         signUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = emailId.getText().toString();
-                String Passw = password.getText().toString();
-                String Username=username.getText().toString();
-                String phone= phonenumber.getText().toString();
-                if (email.isEmpty()) {
-                    emailId.setText("Please enter the Email id");
-                    emailId.requestFocus();
-                } else if (Passw.isEmpty()) {
-                    password.setText("enter the password");
-                    password.requestFocus();
-                } else if (email.isEmpty() && Passw.isEmpty()) {
-                    Toast.makeText(RegistrationActivity.this, "Fields Are Empty!!!", Toast.LENGTH_SHORT).show();
-                } else if ((!email.isEmpty()) && !(Passw.isEmpty())) {
-                    mFirebase.createUserWithEmailAndPassword(email,Passw).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            //if (!task.isSuccessful()) {
-                               // Toast.makeText(RegistrationActivity.this,"Error!!", Toast.LENGTH_SHORT).show();
-                            //} else {
-                                startActivity(new Intent(RegistrationActivity.this, userdata.class));
-                           // }
-                        }
-                    });
-                } else {
-                    Toast.makeText(RegistrationActivity.this, "Error!!!!", Toast.LENGTH_SHORT).show();
+                try {
+
+
+                    String email = emailId.getText().toString();
+                    String Passw = password.getText().toString();
+
+                    if (email.isEmpty()) {
+                        emailId.setText("Please enter the Email id");
+                        emailId.requestFocus();
+                    } else if (Passw.isEmpty()) {
+                        password.setText("enter the password");
+                        password.requestFocus();
+                    } else if (email.isEmpty() && Passw.isEmpty()) {
+                        Toast.makeText(RegistrationActivity.this, "Fields Are Empty!!!", Toast.LENGTH_SHORT).show();
+                    } else if ((!email.isEmpty()) && !(Passw.isEmpty())) {
+                        mFirebase.createUserWithEmailAndPassword(email, Passw).addOnCompleteListener(RegistrationActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(RegistrationActivity.this, "Check the Email id is valid or  Already exist", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(new Intent(RegistrationActivity.this, userdata.class));
+                                }
+                            }
+                        });
+                    } else {
+                        Toast.makeText(RegistrationActivity.this, "Error!!!", Toast.LENGTH_SHORT).show();
+                    }
+                } catch (Exception e) {
+                    emailId.setText(e.toString());
                 }
             }
 
-        });
+
+            });
         signIn_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

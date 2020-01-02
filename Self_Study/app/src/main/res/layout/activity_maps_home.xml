@@ -6,8 +6,9 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
 
         <fragment
             android:id="@+id/map"
@@ -16,12 +17,14 @@
             android:layout_height="579dp"
             tools:context=".MapsHome" />
 
+
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_alignParentBottom="true"
         android:background="@drawable/mapbg"
         android:focusableInTouchMode="false"
@@ -30,13 +33,13 @@
         <Button
             android:id="@+id/Route"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_width="200dp"
+            android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="28dp"
             android:background="@drawable/butonbground"
-            android:drawableLeft="@drawable/routeind"
-            android:text="Search Route"
+            android:drawableLeft="@drawable/route"
+            android:text="Create Ride"
             map:layout_constraintBottom_toBottomOf="parent"
             map:layout_constraintEnd_toEndOf="parent"
             map:layout_constraintStart_toStartOf="parent"
@@ -80,5 +83,4 @@
             map:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </RelativeLayout>

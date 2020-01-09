@@ -1,16 +1,9 @@
 <resources>
     <string name="app_name">Pick Me Up</string>
+    <string name="radio_male">Male</string>
+    <string name="radio_female">Female</string>
 
-    <string-array name="country_arrays">
-        <item>Choose Country</item>
-        <item>Bangladesh</item>
-        <item>United States</item>
-        <item>Indonesia</item>
-        <item>France</item>
-        <item>Italy</item>
-        <item>Singapore</item>
-        <item>New Zealand</item>
-        <item>India</item>
-    </string-array>
     <string name="title_activity_maps_home">Map</string>
+    <string name="title_activity_search__ride">Map</string>
+    <string name="access_token" translatable="false">pk.eyJ1IjoiZGlub3ZhcmdoZXNlMyIsImEiOiJjazUzcHl2bTMwYjllM25waGkzZDhpYmYwIn0.A3nerTuymX-HDgg90a5xMA</string>
 </resources>

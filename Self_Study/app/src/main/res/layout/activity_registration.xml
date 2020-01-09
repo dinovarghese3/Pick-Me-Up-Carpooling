@@ -51,39 +51,21 @@
         android:orientation="vertical">
 
         <EditText
-            android:id="@+id/userName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_top"
-            android:hint="Username"
-            android:inputType="textPersonName"
-            android:padding="15dp" />
-
-        <EditText
             android:id="@+id/emailID"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_middle"
+            android:background="@drawable/edit_text_top"
             android:hint="Email"
             android:inputType="textEmailAddress"
             android:padding="15dp" />
 
         <EditText
-            android:id="@+id/passWord"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_middle"
-            android:hint="Password"
-            android:inputType="textPassword"
-            android:padding="15dp" />
-
-        <EditText
-            android:id="@+id/phoneNumber"
+            android:id="@+id/email_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/dit_text_bottom"
-            android:hint="Phone Number"
-            android:inputType="phone"
+            android:hint="Password"
+            android:inputType="textPassword"
             android:padding="15dp" />
 
 

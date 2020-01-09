@@ -215,6 +215,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String str_origin = "origin="+origin.latitude+","+origin.longitude;
 
         // Destination of route
+        Toast.makeText(this, "destination seting", Toast.LENGTH_SHORT).show();
         String str_dest = "destination="+dest.getLatitude()+","+dest.getLongitude();
 
         // Key
